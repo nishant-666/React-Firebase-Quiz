@@ -10,9 +10,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Quiz() {
     const navigate = useNavigate()
-    const [quizCount, setQuizCount] = React.useState('');
+    const [quizCount, setQuizCount] = React.useState('10');
     const [quizType, setQuizType] = React.useState('');
-    const [quizDifficulty, setQuizDifficulty] = React.useState('');
+    const [quizDifficulty, setQuizDifficulty] = React.useState('easy');
     const [playerName, setPlayerName] = React.useState('');
     const handleChange = (event) => {
         setQuizType(event.target.value);
@@ -52,10 +52,11 @@ export default function Quiz() {
             <ToastContainer />
             <h1>React Quiz</h1>
             <TextField
+                required
                 style={{ marginBottom: 20 }}
                 fullWidth
                 id="outlined-basic"
-                label="Player Name"
+                label="Enter Your Name"
                 variant="outlined"
                 onChange={(e) => getPlayerName(e.target.value)}
                 value={playerName}

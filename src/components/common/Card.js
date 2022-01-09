@@ -17,7 +17,8 @@ export default function OutlinedCard({
                 <Card variant="outlined">
                     <CardContent>
                         <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-                            Question: {questionsArray[questionCounter - 1].question}
+                            Question: {questionsArray[questionCounter - 1]
+                            .question.replace(/&quot;/g, ``)}
                         </Typography>
 
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -27,7 +28,8 @@ export default function OutlinedCard({
                         {[
                             ...questionsArray[questionCounter - 1].incorrect_answers,
                             questionsArray[questionCounter - 1].correct_answer
-                        ].map((options) => {
+                        ].sort( () => Math.random() - 0.5)
+                        .map((options) => {
                             return (
                                 <Grid
                                     nextQuestion={nextQuestion}

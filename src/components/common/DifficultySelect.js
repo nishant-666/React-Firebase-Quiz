@@ -6,11 +6,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function BasicSelect({
-    quizType,
+    quizDifficulty,
     handleChange
 }) {
-
-
     return (
         <Box sx={{ minWidth: 220 }} style={{marginTop: 20}}>
             <FormControl fullWidth>
@@ -18,7 +16,7 @@ export default function BasicSelect({
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={quizType}
+                    value={quizDifficulty}
                     label="Quiz Difficulty"
                     onChange={handleChange}
                 >

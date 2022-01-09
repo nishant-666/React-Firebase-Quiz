@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Card from './common/Card';
 import { database } from '../firebase-config';
 import { addDoc, collection } from 'firebase/firestore';
+import moment from 'moment';
 export default function PlayQuiz() {
     const { state } = useLocation();
     const navigate = useNavigate();
@@ -33,6 +34,7 @@ export default function PlayQuiz() {
     const submitQuiz = () => {
         addDoc(databaseRef, {
             playerName: playerName,
+            timeStamp: moment().format('LLL'),
             difficulty: quizDifficulty,
             category: questionsArray[0].category,
             finalScore: result

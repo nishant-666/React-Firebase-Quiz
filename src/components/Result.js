@@ -34,11 +34,9 @@ export default function Result() {
     return (
         <div>
             <h1>Results</h1>
-            {finalResult !== 0 ? (
-                <h2>Final Score is {finalResult}</h2>
-            ) : (
-                ""
-            )}
+
+            <h2>Your Final Score is {finalResult}</h2>
+
 
             <Button
                 onClick={retryQuiz}
