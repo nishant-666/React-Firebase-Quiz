@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from './Grid';
+import parse from 'html-react-parser';
 export default function OutlinedCard({
     questionCounter,
     questionsArray,
@@ -17,8 +18,7 @@ export default function OutlinedCard({
                 <Card variant="outlined">
                     <CardContent>
                         <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-                            Question: {questionsArray[questionCounter - 1]
-                            .question.replace(/&quot;/g, ``)}
+                            Question: {parse(questionsArray[questionCounter - 1].question)}
                         </Typography>
 
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -28,18 +28,18 @@ export default function OutlinedCard({
                         {[
                             ...questionsArray[questionCounter - 1].incorrect_answers,
                             questionsArray[questionCounter - 1].correct_answer
-                        ].sort( () => Math.random() - 0.5)
-                        .map((options) => {
-                            return (
-                                <Grid
-                                    nextQuestion={nextQuestion}
-                                    options={options}
-                                    setResult={setResult}
-                                    result={result}
-                                    correctAnswer={questionsArray[questionCounter - 1].correct_answer}
-                                />
-                            )
-                        })}
+                        ].sort(() => Math.random() - 0.5)
+                            .map((options) => {
+                                return (
+                                    <Grid
+                                        nextQuestion={nextQuestion}
+                                        options={options}
+                                        setResult={setResult}
+                                        result={result}
+                                        correctAnswer={questionsArray[questionCounter - 1].correct_answer}
+                                    />
+                                )
+                            })}
                     </CardContent>
                 </Card>
             ) : (

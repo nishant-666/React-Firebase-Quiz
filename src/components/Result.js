@@ -10,7 +10,7 @@ export default function Result() {
     const databaseRef = collection(database, 'Leader Board')
     const navigate = useNavigate();
     const { state } = useLocation();
-    const [finalResult, setFinalResult] = React.useState(0);
+    const [finalResult, setFinalResult] = React.useState(null);
     const [leaderBoardData, setLeaderBoardData] = React.useState([]);
     React.useEffect(() => {
         if (state) {
@@ -34,9 +34,11 @@ export default function Result() {
     return (
         <div>
             <h1>Results</h1>
-
-            <h2>Your Final Score is {finalResult}</h2>
-
+            {finalResult === null ? (
+                <></>
+            ) : (
+                <h2>Your Final Score is {finalResult}</h2>
+            )}
 
             <Button
                 onClick={retryQuiz}

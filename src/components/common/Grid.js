@@ -28,7 +28,7 @@ export default function BasicGrid({
             setResult(result + 1);
             document.getElementById('correct-answer').play()
             jsConfetti.addConfetti({
-                confettiNumber: 500,
+                confettiNumber: 300,
                 confettiColors: [
                     '#e91e63',
                     '#00bcd4',
@@ -47,7 +47,6 @@ export default function BasicGrid({
             })
         }
         else {
-            setResult(result - 1)
             document.getElementById('wrong-answer').play()
             toast.error("Wrong Answer", {
                 autoClose: 2000,

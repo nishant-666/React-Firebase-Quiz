@@ -26,7 +26,7 @@ export default function PlayQuiz() {
     }, [])
 
     const nextQuestion = () => {
-        if (questionCounter < totalQuiz) {
+        if (questionCounter < questionsArray.length + 1) {
             setQuesCounter(questionCounter + 1)
         }
     }
@@ -39,36 +39,41 @@ export default function PlayQuiz() {
             category: questionsArray[0].category,
             finalScore: result
         })
-        .then(() => {
-            navigate('/results', {
-                state: {
-                    finalResults: result,
-                }
+            .then(() => {
+                navigate('/results', {
+                    state: {
+                        finalResults: result,
+                    }
+                })
             })
-        })
     }
     return (
         <div>
-            <h1>Play Quiz</h1>
+            {questionCounter < questionsArray.length + 1 ? (
+                <div>
+                    <h1>Play Quiz</h1>
 
-            <h2>Question Number: {questionCounter}</h2>
-            <h3>Difficulty Level: {quizDifficulty}</h3>
-            <Card
-                questionsArray={questionsArray}
-                questionCounter={questionCounter}
-                nextQuestion={nextQuestion}
-                setResult={setResult}
-                result={result}
-            />
-            {questionCounter === Number(totalQuiz) ? (
-                <Button
-                    onClick={submitQuiz}
-                    variant="contained"
-                    style={{ marginLeft: 10 }}>
-                    Submit
-                </Button>
+                    <h2>Question Number: {questionCounter}</h2>
+                    <h3>Difficulty Level: {quizDifficulty}</h3>
+                    <Card
+                        questionsArray={questionsArray}
+                        questionCounter={questionCounter}
+                        nextQuestion={nextQuestion}
+                        setResult={setResult}
+                        result={result}
+                    />
+                </div>
             ) : (
-                ""
+                <div className='submit-container'>
+                    <h2>The Quiz is now finished..</h2>
+                    <p>You can Submit your Score..</p>
+                    <Button
+                        onClick={submitQuiz}
+                        variant="contained"
+                        style={{ marginLeft: 10 }}>
+                        Submit
+                    </Button>
+                </div>
             )}
         </div>
     )
