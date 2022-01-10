@@ -22,7 +22,7 @@ export default function OutlinedCard({
                         </Typography>
 
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            Category: {questionsArray[questionCounter - 1].category}
+                            Category: {parse(questionsArray[questionCounter - 1].category)}
                         </Typography>
 
                         {[
@@ -33,7 +33,7 @@ export default function OutlinedCard({
                                 return (
                                     <Grid
                                         nextQuestion={nextQuestion}
-                                        options={options}
+                                        options={parse(options)}
                                         setResult={setResult}
                                         result={result}
                                         correctAnswer={questionsArray[questionCounter - 1].correct_answer}
